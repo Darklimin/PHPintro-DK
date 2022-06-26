@@ -27,33 +27,33 @@ declare(strict_types=1);
 //}
 //
 //var_dump(exercise1());
-
-function exercise2(int $keyPart): ?array
-{
-    $products = [
-        'product_1' => 'desk',
-        'product_2' => 'lamp',
-        'product_3' => 'sofa',
-    ];
-
-    if (isset($products['product_' . $keyPart])){
-        unset($products['product_' . $keyPart]);
-    } else {
-        return NULL;
-    }
-
-    /*
-    Sunaikinkitę reikšmę, kuri atitiktų raktą 'product_' + $keyPart ir grąžinkite pamodifikuotą masyvą.
-    Jeigu tokio rakto nėra, gražinkite null. Pridėkite trūkstamą return tipą.
-    Funkcijos kvietimas: exercise2(1)
-    */
-
-    return [$products];
-}
-
-var_dump(exercise2(1));
-
-
+//
+//function exercise2(int $keyPart): ?array
+//{
+//    $products = [
+//        'product_1' => 'desk',
+//        'product_2' => 'lamp',
+//        'product_3' => 'sofa',
+//    ];
+//
+//    if (isset($products['product_' . $keyPart])){
+//        unset($products['product_' . $keyPart]);
+//    } else {
+//        return NULL;
+//    }
+//
+//    /*
+//    Sunaikinkitę reikšmę, kuri atitiktų raktą 'product_' + $keyPart ir grąžinkite pamodifikuotą masyvą.
+//    Jeigu tokio rakto nėra, gražinkite null. Pridėkite trūkstamą return tipą.
+//    Funkcijos kvietimas: exercise2(1)
+//    */
+//
+//    return [$products];
+//}
+//
+//var_dump(exercise2(1));
+////
+//
 //function exercise3(): array
 //{
 //    $transactions = [
@@ -71,26 +71,40 @@ var_dump(exercise2(1));
 //    Sunaikinkitę visus elementus, kurių reikšmė yra 'error' ir grąžinkite pamodifikuotą masyvą.
 //    Tikėkitės, kad $products masyvas gali turėti ne 5, 100 elementų - naudokite ciklą.
 //    */
+//    foreach ($transactions as $fkey => $fvalue){
+//        foreach ($fvalue as $value){
+//            if ($value === 'error'){
+//                unset($transactions[$fkey]);
+//            }
+//        }
+//    }
 //
-//    return [];
+//    return [$transactions];
 //}
 //
-//function exercise4(string $key): string
-//{
-//    $products = [
-//        'product_1' => 'shirt',
-//        'product_2' => 'trousers',
-//        'product_98' => 'coat',
-//    ];
-//    /*
-//    Funkcija turi grąžinti reikšmę pagal paduota raktą.
-//    Jeigu paduotas raktas neegzistuoja $products masyve, gražinkite tekstą 'Item not found'.
-//    Funkcijos kvietimas: exercise4('product_2')
-//    */
-//
-//    return '';
-//}
-//
+//    var_dump(exercise3());
+
+function exercise4(string $key): string
+{
+    $products = [
+        'product_1' => 'shirt',
+        'product_2' => 'trousers',
+        'product_98' => 'coat',
+    ];
+    /*
+    Funkcija turi grąžinti reikšmę pagal paduota raktą.
+    Jeigu paduotas raktas neegzistuoja $products masyve, gražinkite tekstą 'Item not found'.
+    Funkcijos kvietimas: exercise4('product_2')
+    */
+
+    if (isset($products[$key])){
+        return $products[$key];
+    } else {
+        return 'Item not found';
+    }
+}
+echo exercise4('product_2');
+
 //function exercise5(): array
 //{
 //    $transactions = [
