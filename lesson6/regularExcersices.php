@@ -289,7 +289,7 @@ function getNumbers(): array
 
 function exercise17 (): array {
     $newArr = getNumbers();
-    array_push($newArr,255);
+    $newArr[]=255;
     return $newArr;
 };
 
