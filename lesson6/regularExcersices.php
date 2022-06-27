@@ -167,7 +167,7 @@ declare(strict_types=1);
 //
 //function exercise10(int $number): void
 //{
-//    if ($number > 5){
+//    if ($number > 2){
 //        $i = 5;
 //        while ($i < $number){
 //            if ($i % 3 === 0){
