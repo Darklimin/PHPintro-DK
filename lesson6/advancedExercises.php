@@ -83,28 +83,28 @@ declare(strict_types=1);
 //}
 //
 //    var_dump(exercise3());
-
-function exercise4(string $key): string
-{
-    $products = [
-        'product_1' => 'shirt',
-        'product_2' => 'trousers',
-        'product_98' => 'coat',
-    ];
-    /*
-    Funkcija turi grąžinti reikšmę pagal paduota raktą.
-    Jeigu paduotas raktas neegzistuoja $products masyve, gražinkite tekstą 'Item not found'.
-    Funkcijos kvietimas: exercise4('product_2')
-    */
-
-    if (isset($products[$key])){
-        return $products[$key];
-    } else {
-        return 'Item not found';
-    }
-}
-echo exercise4('product_2');
-
+//
+//function exercise4(string $key): string
+//{
+//    $products = [
+//        'product_1' => 'shirt',
+//        'product_2' => 'trousers',
+//        'product_98' => 'coat',
+//    ];
+//    /*
+//    Funkcija turi grąžinti reikšmę pagal paduota raktą.
+//    Jeigu paduotas raktas neegzistuoja $products masyve, gražinkite tekstą 'Item not found'.
+//    Funkcijos kvietimas: exercise4('product_2')
+//    */
+//
+//    if (isset($products[$key])){
+//        return $products[$key];
+//    } else {
+//        return 'Item not found';
+//    }
+//}
+//echo exercise4('product_2');
+//
 //function exercise5(): array
 //{
 //    $transactions = [
@@ -117,6 +117,11 @@ echo exercise4('product_2');
 //            'price' => 14,
 //        ],
 //    ];
+//
+//    foreach ($transactions as $key => $value){
+//        $transactions[$key]["total"] = $value["count"] * $value["price"];
+//    }
+////
 //    /*
 //    Kiekvienai iš transakcijų, esančių kintamajame $transactions, suskaičiuokite galutinę sumą ir pridėkite į
 //    transakciją su raktu 'total'. Grąžinkite $transactions iš funkcijos.
@@ -132,8 +137,10 @@ echo exercise4('product_2');
 //    ];
 //    */
 //
-//    return [];
+//    return [$transactions];
 //}
+//
+//var_dump(exercise5());
 //
 //function exercise6(): array
 //{
@@ -152,6 +159,13 @@ echo exercise4('product_2');
 //            'price' => 14.1
 //        ],
 //    ];
+//
+//    foreach ($transactions as $key => $value){
+//        $transactions[$key]["totals"]["eur"]= $value["count"] * $value["price"];
+//        $transactions[$key]["totals"]["usd"]= round(($value["count"] * $value["price"] * $currencyRates['usd']), 2);
+//        $transactions[$key]["totals"]["gbp"]= round(($value["count"] * $value["price"] * $currencyRates['gbp']), 2);
+//    }
+//
 //    /*
 //    Kiekvienai iš transakcijų, esančių kintamajame $transactions, suskaičiuokite galutinę sumą visomis valiutomis
 //    esančiomis kintamajame $currencyRates (taip pat ir bazine valiuta - eur) ir pridėkite į transakciją su raktu 'totals'.
@@ -174,21 +188,23 @@ echo exercise4('product_2');
 //    ];
 //    */
 //
-//    return [];
+//    return [$transactions];
 //}
+//
+//var_dump(exercise6());
+//
+//$productCollection = [
+//    [
+//        'name' => 'Best sofa',
+//        'price' => '55',
+//    ],
+//];
 //
 //function exercise7(array $collection): array
 //{
 //    /*
 //    Funkcijai paduodama produktų kolekcija:
-//    $productCollection = [
-//        [
-//            'name' => 'Best sofa',
-//            'price' => '55,
-//        ],
-//        ...
-//    ];
-//    exercise7($productCollection);
+//
 //    Funkcija turi grąžinti performuota kolekciją - 'name' turi tapti kolekcijos elemento raktu:
 //    [
 //        'Best sofa' => [
@@ -198,8 +214,16 @@ echo exercise4('product_2');
 //    ]
 //    */
 //
-//    return [];
+////    $collection[$collection[0]["name"]] = [$collection[0]["price"]];
+//    $collection[0] = $collection[$collection[0]["name"]];
+//
+//    return [$collection];
 //}
+//
+//
+//
+//print_r(exercise7($productCollection));
+
 //
 //function exercise8(): array
 //{
@@ -225,7 +249,7 @@ echo exercise4('product_2');
 //
 //    return [];
 //}
-//
+
 //function exercise9(): void
 //{
 //    $animals = [
