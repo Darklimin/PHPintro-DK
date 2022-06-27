@@ -23,7 +23,7 @@ declare(strict_types=1);
 //    Tikėkitės, kad $products masyvas gali turėti ne 5, 100 elementų - naudokite ciklą.
 //    */
 //
-//    return [$products];
+//    return $products;
 //}
 //
 //var_dump(exercise1());
@@ -48,7 +48,7 @@ declare(strict_types=1);
 //    Funkcijos kvietimas: exercise2(1)
 //    */
 //
-//    return [$products];
+//    return $products;
 //}
 //
 //var_dump(exercise2(1));
@@ -79,7 +79,7 @@ declare(strict_types=1);
 //        }
 //    }
 //
-//    return [$transactions];
+//    return $transactions;
 //}
 //
 //    var_dump(exercise3());
@@ -137,7 +137,7 @@ declare(strict_types=1);
 //    ];
 //    */
 //
-//    return [$transactions];
+//    return $transactions;
 //}
 //
 //var_dump(exercise5());
@@ -188,41 +188,38 @@ declare(strict_types=1);
 //    ];
 //    */
 //
-//    return [$transactions];
+//    return $transactions;
 //}
 //
 //var_dump(exercise6());
-//
-//$productCollection = [
-//    [
-//        'name' => 'Best sofa',
-//        'price' => '55',
-//    ],
-//];
-//
-//function exercise7(array $collection): array
-//{
-//    /*
-//    Funkcijai paduodama produktų kolekcija:
-//
-//    Funkcija turi grąžinti performuota kolekciją - 'name' turi tapti kolekcijos elemento raktu:
-//    [
-//        'Best sofa' => [
-//            'price' => '55,
-//        ],
-//        ...
-//    ]
-//    */
-//
-////    $collection[$collection[0]["name"]] = [$collection[0]["price"]];
-//    $collection[0] = $collection[$collection[0]["name"]];
-//
-//    return [$collection];
-//}
-//
-//
-//
-//print_r(exercise7($productCollection));
+
+$productCollection = [
+    [
+        'name' => 'Best sofa',
+        'price' => '55',
+    ],
+];
+
+function exercise7(array $collection): array
+{
+    /*
+    Funkcijai paduodama produktų kolekcija:
+
+    Funkcija turi grąžinti performuota kolekciją - 'name' turi tapti kolekcijos elemento raktu:
+    [
+        'Best sofa' => [
+            'price' => '55,
+        ],
+        ...
+    ]
+    */
+    $collection[$collection[0]["name"]] = $collection[0];
+    unset($collection[0]);
+    unset($collection["Best sofa"]["name"]);
+    return $collection;
+}
+
+print_r(exercise7($productCollection));
 
 //
 //function exercise8(): array
