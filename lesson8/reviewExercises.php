@@ -23,7 +23,6 @@ $numbers = [1, 15, 25, 13, 45, 551, 2];
 //    Funkcijos outputas:
 //    [15, 225, 375, ...]
 //    */
-////function multi($i){$i * 15}
 //    return array_map(function($i){
 //        return $i * 15;
 //    }, $arr);
@@ -62,7 +61,7 @@ $numbers = [1, 15, 25, 13, 45, 551, 2];
 //}
 //print_r(exercise3('descending'));
 
-//
+////
 //function exercise4(int $number): int
 //{
 //    /*
@@ -73,31 +72,52 @@ $numbers = [1, 15, 25, 13, 45, 551, 2];
 //    */
 //    $numbers = [1, 15, 25, 13, 45, 551, 2];
 //
-//    return 0;
+//    return array_sum(array_map(function($i) use ($number) {return $i + $number;}, $numbers));
 //}
-//
-//function exercise5(int $number): void
-//{
-//    /*
-//    Išspausdinkite skaičius, kurie prasideda nuo $number ir mažėja arba didėja iki 0, per du skaitmenis.
-//
-//    Funkcijos kvietimas: exercise6(5)
-//    Funkcija spausdina:
-//    5
-//    3
-//    1
-//    0
-//
-//    Funkcijos kvietimas: exercise6(-5)
-//    Funkcija spausdina:
-//    -5
-//    -3
-//    -1
-//    0
-//    */
-//
-//}
-//
+// print_r(exercise4(9));
+
+function exercise5(int $number): void
+{
+    if ($number>0){
+        while ($number>0){
+            echo $number . PHP_EOL;
+            $number--;
+            $number--;
+        }
+        echo 0;
+    } elseif ($number<0){
+        while ($number<0){
+            echo $number . PHP_EOL;
+            $number++;
+            $number++;
+        }
+        echo 0;
+    } else {
+            echo 0;
+        }
+
+    /*
+    Išspausdinkite skaičius, kurie prasideda nuo $number ir mažėja arba didėja iki 0, per du skaitmenis.
+
+    Funkcijos kvietimas: exercise5(5)
+    Funkcija spausdina:
+    5
+    3
+    1
+    0
+
+    Funkcijos kvietimas: exercise5(-5)
+    Funkcija spausdina:
+    -5
+    -3
+    -1
+    0
+    */
+
+}
+
+exercise5(5);
+
 //function exercise6(array $numbers): array
 //{
 //    /*
