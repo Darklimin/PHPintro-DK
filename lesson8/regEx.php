@@ -63,40 +63,40 @@ $someProducts = [
 //}
 //
 //print_r(exercise3($someProducts));
-
-function exercise4(): array
-{
-    /*
-    Kiekvienam žodžiui apskaičiuokite balsių skaičių (a, e, i, o, u)
-    Funkcijos kvietimas: exercise4()
-    Funkcija grąžina: [2, 3, 3, 1, 2]
-    */
-
-    $words = [
-        'tennis',
-        'rooftops',
-        'hillside',
-        'warm',
-        'friends',
-    ];
-    $output = [];
-    $sum = 0;
-    foreach ($words as $key => $value){
-        $var = str_split($value);
-        foreach ($var as $xKey => $xValue){
-            if ($xValue === "a" || $xValue === "e" || $xValue === "i" || $xValue === "o" || $xValue === "u"){
-                $sum++;
-            }
-        }
-        $output[$key] = $sum;
-        $sum = 0;
-    }
-
-    return $output;
-}
-
-var_dump(exercise4());
-
+//
+//function exercise4(): array
+//{
+//    /*
+//    Kiekvienam žodžiui apskaičiuokite balsių skaičių (a, e, i, o, u)
+//    Funkcijos kvietimas: exercise4()
+//    Funkcija grąžina: [2, 3, 3, 1, 2]
+//    */
+//
+//    $words = [
+//        'tennis',
+//        'rooftops',
+//        'hillside',
+//        'warm',
+//        'friends',
+//    ];
+//    $output = [];
+//    $sum = 0;
+//    foreach ($words as $key => $value){
+//        $var = str_split($value);
+//        foreach ($var as $xKey => $xValue){
+//            if ($xValue === "a" || $xValue === "e" || $xValue === "i" || $xValue === "o" || $xValue === "u"){
+//                $sum++;
+//            }
+//        }
+//        $output[$key] = $sum;
+//        $sum = 0;
+//    }
+//
+//    return $output;
+//}
+//
+//var_dump(exercise4());
+//
 //function exercise5(array $products): int
 //{
 //    /*
@@ -104,20 +104,28 @@ var_dump(exercise4());
 //    į sumą neįtraukite tuščių simbolių - ty. tarpų, new line ir pan.
 //    Naudokite $someProducts masyvą.
 //    */
-//
-//    return 0;
+//    $sum = 0;
+//    foreach ($products as $values) {
+//        $sum += strlen(chop($values));
+//    }
+//    return $sum;
 //}
 //
-//function exercise6(): int
-//{
-//    $text = 'The African philosophy of Ubuntu has its roots in the Nguni word for being human.
-//    The concept emphasises the significance of our community and shared humanity and teaches
-//    us that "A person is a person through others". Many view the philosphy as a counterweight
-//    to the culture of individualism in our contemporary world.';
-//
-//    /*
-//    Suskaičiuokite kiek balsių yra tekste
-//    */
-//
-//    return 0;
-//}
+//var_dump(exercise5($someProducts));
+
+function exercise6(): int
+{
+    $text = 'The African philosophy of Ubuntu has its roots in the Nguni word for being human.
+    The concept emphasises the significance of our community and shared humanity and teaches
+    us that "A person is a person through others". Many view the philosphy as a counterweight
+    to the culture of individualism in our contemporary world.';
+
+    /*
+    Suskaičiuokite kiek balsių yra tekste
+    */
+    return substr_count(strtolower($text), 'a')+substr_count(strtolower($text), 'e')
+        +substr_count(strtolower($text), 'i')+substr_count(strtolower($text), 'o')
+        +substr_count(strtolower($text), 'u')+substr_count(strtolower($text), 'i');
+}
+
+print_r(exercise6());
