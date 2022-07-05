@@ -52,65 +52,80 @@ declare(strict_types=1);
 - 2000/02/15 08:30:00 PM
 - 2000 March 2nd 15:30:00
 */
-function exercise4(): void
+//function exercise4(): void
+//{
+//    $dateString = "2000-03-02 15:30:00";
+//    $date = DateTime::createFromFormat("Y-m-d H:i:s", $dateString);
+//    $dateStringOne = "2000/02/15 08:30:00 PM";
+//    $dateOne = DateTime::createFromFormat("Y/m/d h:i:s A", $dateStringOne);
+//    $dateStringTwo = "2000 March 2nd 15:30:00";
+//    $dateTwo = DateTime::createFromFormat("Y M jS H:i:s", $dateStringTwo);
+//    var_dump($date);
+//    var_dump($dateOne);
+//    var_dump($dateTwo);
+//}
+//
+//exercise4();
+
+/*
+5. Sukurkite datą iš '15th Jan 2021 8:15:01 PM' (data X). Pamodifikuokite, kad gautumėte:
+- datą po 2 savaičių nuo datos X
+- datą po 10 metų nuo datos X
+- datą prieš 5 valandas nuo datos X
+- paskutinę mėnesio dieną
+- pirmą mėnesio dieną
+- ateinantį antradienį
+- datą prieš 1 dieną 8 valandas 15 minučių nuo datos X
+*/
+
+//function exercise5(): void
+//{
+//$dateString = "15th Jan 2021 8:15:01 PM";
+//$date = DateTime::createFromFormat("jS M Y g:i:s A", $dateString);
+////$date->modify('+2weeks');
+////$date->modify('+10years');
+////$date->modify('-5hours');
+////$date->modify('+16 days');
+////$date->modify('-14 days');
+////$date->modify('+4 days');
+////$date->modify('-1 day -8 hours -15 minutes');
+//print_r($date);
+//}
+//
+//exercise5();
+
+function exercise6(): void
 {
-    $dateString = "2000-03-02 15:30:00";
-    $date = DateTime::createFromFormat("Y-m-d H:i:s", $dateString);
-    $dateStringOne = "2000/02/15 08:30:00 PM";
-    $dateOne = DateTime::createFromFormat("Y/m/d h:i:s A", $dateStringOne);
-    $dateStringTwo = "2000 March 2nd 15:30:00";
-    $dateTwo = DateTime::createFromFormat("Y M jS H:i:s", $dateStringTwo);
-    var_dump($date);
-    var_dump($dateOne);
-    var_dump($dateTwo);
+    $products = [
+        [
+            'name' => 'Wine glass',
+            'last_purchase' => '2021 Jan 15 18:34:12',
+        ],
+        [
+            'name' => 'Bread knife',
+            'last_purchase' => '2020 Mar 15 23:14:00',
+        ],
+        [
+            'name' => 'Blue chair',
+            'last_purchase' => '2019 Dec 02 15:00:12',
+        ],
+    ];
+        foreach ($products as $key){
+        $date = DateTime::createFromFormat("Y M d H:i:s", $key['last_purchase']);
+        $myArr = (array)$date;
+        echo $key['name'] . " " . substr($myArr["date"], 0,19) . PHP_EOL;
+    }
+
+    /*
+    Išspausdinkite produktų paskutinių pirkimų santrauką:
+    Wine glass 2021-01-15 18:34:12
+    ...
+    */
+
 }
 
-exercise4();
+exercise6();
 
-///*
-//5. Sukurkite datą iš '15th Jan 2021 8:15:01 PM' (data X). Pamodifikuokite, kad gautumėte:
-//- datą po 2 savaičių nuo datos X
-//- datą po 10 metų nuo datos X
-//- datą prieš 5 valandas nuo datos X
-//- paskutinę mėnesio dieną
-//- pirmą mėnesio dieną
-//- ateinantį antradienį
-//- datą prieš 1 dieną 8 valandas 15 minučių nuo datos X
-//*/
-//
-//function exercise5(): void
-////{
-////
-//$date = new DateTime(15th Jan 2021 8:15:01 PM);
-////$date->modify($dateString);
-//print_r($date);
-
-//}
-//
-//function exercise6(): void
-//{
-//    $products = [
-//        [
-//            'name' => 'Wine glass',
-//            'last_purchase' => '2021 Jan 15 18:34:12',
-//        ],
-//        [
-//            'name' => 'Bread knife',
-//            'last_purchase' => '2020 Mar 15 23:14:00',
-//        ],
-//        [
-//            'name' => 'Blue chair',
-//            'last_purchase' => '2019 Dec 02 15:00:12',
-//        ],
-//    ];
-//
-//    /*
-//    Išspausdinkite produktų paskutinių pirkimų santrauką:
-//    Wine glass 2021-01-15 18:34:12
-//    ...
-//    */
-//}
-//
 //function exercise7($date1, $date2): string
 //{
 //    /*
