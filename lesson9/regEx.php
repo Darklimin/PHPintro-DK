@@ -93,39 +93,39 @@ declare(strict_types=1);
 //}
 //
 //exercise5();
-
-function exercise6(): void
-{
-    $products = [
-        [
-            'name' => 'Wine glass',
-            'last_purchase' => '2021 Jan 15 18:34:12',
-        ],
-        [
-            'name' => 'Bread knife',
-            'last_purchase' => '2020 Mar 15 23:14:00',
-        ],
-        [
-            'name' => 'Blue chair',
-            'last_purchase' => '2019 Dec 02 15:00:12',
-        ],
-    ];
-        foreach ($products as $key){
-        $date = DateTime::createFromFormat("Y M d H:i:s", $key['last_purchase']);
-        $myArr = (array)$date;
-        echo $key['name'] . " " . substr($myArr["date"], 0,19) . PHP_EOL;
-    }
-
-    /*
-    Išspausdinkite produktų paskutinių pirkimų santrauką:
-    Wine glass 2021-01-15 18:34:12
-    ...
-    */
-
-}
-
-exercise6();
-
+//
+//function exercise6(): void
+//{
+//    $products = [
+//        [
+//            'name' => 'Wine glass',
+//            'last_purchase' => '2021 Jan 15 18:34:12',
+//        ],
+//        [
+//            'name' => 'Bread knife',
+//            'last_purchase' => '2020 Mar 15 23:14:00',
+//        ],
+//        [
+//            'name' => 'Blue chair',
+//            'last_purchase' => '2019 Dec 02 15:00:12',
+//        ],
+//    ];
+//        foreach ($products as $key){
+//        $date = DateTime::createFromFormat("Y M d H:i:s", $key['last_purchase']);
+//        $myArr = (array)$date;
+//        echo $key['name'] . " " . substr($myArr["date"], 0,19) . PHP_EOL;
+//    }
+//
+//    /*
+//    Išspausdinkite produktų paskutinių pirkimų santrauką:
+//    Wine glass 2021-01-15 18:34:12
+//    ...
+//    */
+//
+//}
+//
+//exercise6();
+//
 //function exercise7($date1, $date2): string
 //{
 //    /*
@@ -137,9 +137,17 @@ exercise6();
 //    Rezultatas:
 //    'Second date is newer'
 //    */
-//
-//    return '';
+//    if ($date1>$date2){
+//        return 'First date is newer';
+//    } elseif ($date1 === $date2){
+//        return 'Dates are same';
+//    } else {
+//        return 'Second date is newer';
+//    }
 //}
+//
+//echo exercise7(date_create('2022-01-25 17:13:25'), date_create('2020-01-25 17:13:25'));
+//echo exercise7(date_create('2020-01-25 17:13:25'), date_create('2022-01-25 17:13:25'));
 //
 //function exercise8($date): void
 //{
@@ -152,17 +160,39 @@ exercise6();
 //    Rezultatas:
 //    Supplied date is in the future
 //    */
+//    $curDate = date_create();
+//    if ($curDate<$date){
+//        echo 'Supplied date is in the future';
+//    } else {
+//        $dateInt = date_diff($curDate, $date);
+//        echo 'Supplied date was ' . date_interval_format($dateInt, '%a') . ' days ago';
+//    }
 //}
 //
-//function exercise9($date): void
-//{
-//    /*
-//    Išspausdinkite datų skirtumą žodžiais.
-//    Funkcijos kvietimas: exercise9(date_create('2020-01-25 17:13:25'));
-//    Rezultatas:
-//    Supplied date was 2 years 1 months 11 days
-//    Funkcijos kvietimas: exercise9(date_create('2023-01-25 17:13:25'));
-//    Rezultatas:
-//    Supplied date is in the future
-//    */
-//}
+//exercise8(date_create('2022-07-03 17:13:25'));
+//echo PHP_EOL;
+//exercise8(date_create('2023-01-25 17:13:25'));
+
+function exercise9($date): void
+{
+    /*
+    Išspausdinkite datų skirtumą žodžiais.
+    Funkcijos kvietimas: exercise9(date_create('2020-01-25 17:13:25'));
+    Rezultatas:
+    Supplied date was 2 years 1 months 11 days
+    Funkcijos kvietimas: exercise9(date_create('2023-01-25 17:13:25'));
+    Rezultatas:
+    Supplied date is in the future
+    */
+    $curDate = date_create();
+    if ($curDate<$date){
+        echo 'Supplied date is in the future';
+    } else {
+        $dateInt = date_diff($curDate, $date);
+        echo 'Supplied date was ' . date_interval_format($dateInt, '%y years %m months %d days');
+    }
+}
+
+exercise9(date_create('2020-01-25 17:13:25'));
+echo PHP_EOL;
+exercise9(date_create('2023-01-25 17:13:25'));
