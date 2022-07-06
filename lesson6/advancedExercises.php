@@ -22,7 +22,6 @@ declare(strict_types=1);
 //    Sunaikinkitę visus elementus, kurių reikšmė yra 'error' ir grąžinkite pamodifikuotą masyvą.
 //    Tikėkitės, kad $products masyvas gali turėti ne 5, 100 elementų - naudokite ciklą.
 //    */
-//
 //    return $products;
 //}
 //
@@ -52,7 +51,6 @@ declare(strict_types=1);
 //}
 //
 //var_dump(exercise2(1));
-////
 //
 //function exercise3(): array
 //{
@@ -192,35 +190,34 @@ declare(strict_types=1);
 //}
 //
 //var_dump(exercise6());
-
-$productCollection = [
-    [
-        'name' => 'Best sofa',
-        'price' => '55',
-    ],
-];
-
-function exercise7(array $collection): array
-{
-    /*
-    Funkcijai paduodama produktų kolekcija:
-
-    Funkcija turi grąžinti performuota kolekciją - 'name' turi tapti kolekcijos elemento raktu:
-    [
-        'Best sofa' => [
-            'price' => '55,
-        ],
-        ...
-    ]
-    */
-    $collection[$collection[0]["name"]] = $collection[0];
-    unset($collection[0]);
-    unset($collection["Best sofa"]["name"]);
-    return $collection;
-}
-
-print_r(exercise7($productCollection));
-
+//
+//$productCollection = [
+//    [
+//        'name' => 'Best sofa',
+//        'price' => '55',
+//    ],
+//];
+//
+//function exercise7(array $collection): array
+//{
+//    /*
+//    Funkcijai paduodama produktų kolekcija:
+//
+//    Funkcija turi grąžinti performuota kolekciją - 'name' turi tapti kolekcijos elemento raktu:
+//    [
+//        'Best sofa' => [
+//            'price' => '55,
+//        ],
+//        ...
+//    ]
+//    */
+//    $collection[$collection[0]["name"]] = $collection[0];
+//    unset($collection[0]);
+//    unset($collection["Best sofa"]["name"]);
+//    return $collection;
+//}
+//
+//print_r(exercise7($productCollection));
 //
 //function exercise8(): array
 //{
@@ -230,6 +227,11 @@ print_r(exercise7($productCollection));
 //        'sofa',
 //        'error',
 //    ];
+//
+//$output = [];
+//foreach ($products as $key => $value){
+//    $output [$value] = str_split($value);
+//}
 //
 //    /*
 //    Išskaidykite produktų pavadinimus į raides.
@@ -244,9 +246,11 @@ print_r(exercise7($productCollection));
 //    ]
 //    */
 //
-//    return [];
+//    return $output;
 //}
-
+//
+//print_r(exercise8());
+//
 //function exercise9(): void
 //{
 //    $animals = [
@@ -275,6 +279,18 @@ print_r(exercise7($productCollection));
 //            'name' => 'dog',
 //        ],
 //    ];
+//    echo "land: ";
+//    foreach ($animals as $value){
+//        if ($value["type"] === 'land'){
+//            echo $value['name'] . " ";
+//        }
+//    }
+//    echo PHP_EOL . "water: ";
+//    foreach ($animals as $value){
+//        if ($value["type"] === 'water'){
+//            echo $value['name'] . " ";
+//        }
+//    }
 //
 //    /*
 //    Išspausdinkite gyvūnus sugrupuotus pagal tipą.
@@ -284,26 +300,28 @@ print_r(exercise7($productCollection));
 //    */
 //}
 //
-//function getProducts(): array
-//{
-//    return [
-//        'chair' => [
-//            'type' => 'furniture',
-//            'name' => 'Best chair',
-//            'price' => 15,
-//        ],
-//        'lamp' => [
-//            'type' => 'lighting',
-//            'name' => 'Ultimate lamp',
-//            'price' => 99,
-//        ],
-//        'sofa' => [
-//            'type' => 'furniture',
-//            'name' => 'Soft sofa',
-//            'price' => 350
-//        ],
-//    ];
-//}
+//exercise9();
+
+function getProducts(): array
+{
+    return [
+        'chair' => [
+            'type' => 'furniture',
+            'name' => 'Best chair',
+            'price' => 15,
+        ],
+        'lamp' => [
+            'type' => 'lighting',
+            'name' => 'Ultimate lamp',
+            'price' => 99,
+        ],
+        'sofa' => [
+            'type' => 'furniture',
+            'name' => 'Soft sofa',
+            'price' => 350
+        ],
+    ];
+}
 //
 //function exercise10(): array
 //{
@@ -316,19 +334,31 @@ print_r(exercise7($productCollection));
 //        'price' => 200,
 //    ]
 //    */
+//    $products['fridge'] = [
+//        'type' => 'appliance',
+//        'name' => 'Coolest fridge',
+//        'price' => 200,
+//    ];
 //
-//    return [];
+//    return $products;
 //}
 //
+//var_dump(exercise10());
+
 //function exercise11(): int
 //{
 //    $products = getProducts();
 //    /*
 //    Raskite ir grąžinkite visų produktų kainų vidurkį
 //    */
-//
-//    return 0;
+//    $sum = 0;
+//    foreach ($products as $value){
+//        $sum += $value['price'];
+//    }
+//    return (int) ($sum / count($products));
 //}
+//
+//echo exercise11();
 //
 //function exercise12(): array
 //{
@@ -341,16 +371,33 @@ print_r(exercise7($productCollection));
 //        'Soft sofa',
 //    ]
 //    */
-//
-//    return [];
+//    $output = [];
+//    $key = 0;
+//    foreach ($products as $value){
+//        $output[$key] = $value['name'];
+//        $key++;
+//    }
+//    return $output;
 //}
 //
-//function exercise13(): void
-//{
-//    $products = getProducts();
-//    /*
-//    Iteruodami per masyvą išspausdinkite eilutę, kurioje matytusi produkto pavadinimas ir tipas atskirti brūkšneliu:
-//    Best chair - furniture, Ultimate lamp - lighting, Soft sofa - furniture
-//    */
-//
-//}
+//var_dump(exercise12());
+
+function exercise13(): void
+{
+    $products = getProducts();
+    /*
+    Iteruodami per masyvą išspausdinkite eilutę, kurioje matytusi produkto pavadinimas ir tipas atskirti brūkšneliu:
+    Best chair - furniture, Ultimate lamp - lighting, Soft sofa - furniture
+    */
+    $x = 0;
+    foreach ($products as $value){
+        if ($x < count($products)-1) {
+            echo $value['name'] . " - " . $value['type'] . ", ";
+        } else {
+            echo $value['name'] . " - " . $value['type'];
+        }
+        $x++;
+    }
+}
+
+exercise13();
