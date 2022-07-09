@@ -20,9 +20,9 @@ $someProducts = [
 //    */
 //    $longLine = 'Hello_how_are_you_doing?';
 //    return explode("_", $longLine);
-//    }
+//}
 //
-//    var_dump(exercise1());
+//var_dump(exercise1());
 //
 //function exercise2(): array
 //{
@@ -39,11 +39,10 @@ $someProducts = [
 //    ];
 //    foreach ($emails as $key => $value){
 //        if (str_contains($value, "@")){
-//        continue;} else {
+//          continue;} else {
 //            unset($emails[$key]);
+//          }
 //        }
-//    }
-//
 //    return $emails;
 //}
 //
@@ -56,7 +55,7 @@ $someProducts = [
 //    Naudokite $someProducts masyvą
 //    */
 //    $sum = 0;
-//foreach ($products as $values){
+//    foreach ($products as $values){
 //    $sum += strlen($values);
 //}
 //    return $sum;
@@ -91,41 +90,40 @@ $someProducts = [
 //        $output[$key] = $sum;
 //        $sum = 0;
 //    }
-//
 //    return $output;
 //}
 //
 //var_dump(exercise4());
 //
-//function exercise5(array $products): int
-//{
-//    /*
-//    Suskaičiuokite ir grąžinkite visų $products masyve esančių eilučių ilgių sumą, BET
-//    į sumą neįtraukite tuščių simbolių - ty. tarpų, new line ir pan.
-//    Naudokite $someProducts masyvą.
-//    */
-//    $sum = 0;
-//    foreach ($products as $values) {
-//        $sum += strlen(chop($values));
-//    }
-//    return $sum;
-//}
-//
-//var_dump(exercise5($someProducts));
-
-function exercise6(): int
+function exercise5(array $products): int
 {
-    $text = 'The African philosophy of Ubuntu has its roots in the Nguni word for being human.
-    The concept emphasises the significance of our community and shared humanity and teaches
-    us that "A person is a person through others". Many view the philosphy as a counterweight
-    to the culture of individualism in our contemporary world.';
-
     /*
-    Suskaičiuokite kiek balsių yra tekste
+    Suskaičiuokite ir grąžinkite visų $products masyve esančių eilučių ilgių sumą, BET
+    į sumą neįtraukite tuščių simbolių - ty. tarpų, new line ir pan.
+    Naudokite $someProducts masyvą.
     */
-    return substr_count(strtolower($text), 'a')+substr_count(strtolower($text), 'e')
-        +substr_count(strtolower($text), 'i')+substr_count(strtolower($text), 'o')
-        +substr_count(strtolower($text), 'u')+substr_count(strtolower($text), 'i');
+    $sum = 0;
+    foreach ($products as $values) {
+        $sum += strlen(chop($values));
+    }
+    return $sum;
 }
 
-print_r(exercise6());
+var_dump(exercise5($someProducts));
+
+//function exercise6(): int
+//{
+//    $text = 'The African philosophy of Ubuntu has its roots in the Nguni word for being human.
+//    The concept emphasises the significance of our community and shared humanity and teaches
+//    us that "A person is a person through others". Many view the philosphy as a counterweight
+//    to the culture of individualism in our contemporary world.';
+//
+//    /*
+//    Suskaičiuokite kiek balsių yra tekste
+//    */
+//    return substr_count(strtolower($text), 'a') + substr_count(strtolower($text), 'e') +
+//           substr_count(strtolower($text), 'i') + substr_count(strtolower($text), 'o') +
+//           substr_count(strtolower($text), 'u') + substr_count(strtolower($text), 'i');
+//}
+//
+//print_r(exercise6());
