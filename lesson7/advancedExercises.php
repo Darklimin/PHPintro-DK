@@ -58,74 +58,91 @@ function getShoppingCart(): array
 //}
 //
 //echo exercise2();
-
-function exercise3(): float
-{
-
-    /*
-    Suskaičiuokite pirkinių krepšelio bendrą sumą.
-    Galioja tos pačios salygos kaip ir funkcijoje exercise2, bet papildomai reikia:
-    - Skaičiuojant bendrą sumą pritaikyti nuolaidas.
-    Nuolaida laikoma 'cartDiscounts' masyve, taip pat nuolaida gali būti ir prie produkto - 'discount'.
-    Abi reikšmės yra išreikštos procentais.
-    Nuolaidos sumuojasi.
-    Krepšelio nuolaida taikoma bendrai krepšelio sumai.
-    Naudojama tik viena, didžiausia su krepšeliu susieta nuolaida ('cartDiscounts').
-    */
-    $sum = 0;
-    foreach (getShoppingCart()['products'] as $value){
-        $midSum = 0;
-        if (is_array($value)){
-            if (array_key_exists('price', $value) && array_key_exists('quantity', $value)){
-                $midSum += $value['price'] * $value['quantity'];
-            }
-            if (array_key_exists('discount', $value)){
-                $midSum -= $midSum / 100 * $value['discount'];
-            }
-        }
-        $sum += $midSum;
-    }
-    $finalDisc = getShoppingCart()['cartDiscounts'];
-    rsort($finalDisc);
-    $sum -= $sum / 100 * $finalDisc[0];
-    return round($sum, 2);
-}
-
-echo exercise3();
-
-//function exercise4(array $newIpList): array
+//
+//function exercise3(): float
 //{
-//    $existingIpList = [
-//        '1.17.2.1',
-//        '15.1.2.1',
-//        '1.9.2.1',
-//        '1.1.98.1',
-//        '1.1.2.12',
-//        '1.11.2.1',
-//        '122.1.2.1',
-//        '1.31.2.1',
-//        '33.12.2.1',
-//    ];
 //
 //    /*
-//    Sukategorizuokite ip adresų sąrašą.
-//    ipsNew - ip iš $newIpList, kurių nėra $existingIpList
-//    ipsOld - ip iš $existingIpList, kurių nėra $newIpList
-//    ipsRemaining - ip, kurie egzistuoja abiejuose sąrašuose
-//    funkcija butu kviečiam taip:
-//    exercise4(
-//        ['15.1.2.1', '16.1.8.1', '15.1.8.1']
-//    );
+//    Suskaičiuokite pirkinių krepšelio bendrą sumą.
+//    Galioja tos pačios salygos kaip ir funkcijoje exercise2, bet papildomai reikia:
+//    - Skaičiuojant bendrą sumą pritaikyti nuolaidas.
+//    Nuolaida laikoma 'cartDiscounts' masyve, taip pat nuolaida gali būti ir prie produkto - 'discount'.
+//    Abi reikšmės yra išreikštos procentais.
+//    Nuolaidos sumuojasi.
+//    Krepšelio nuolaida taikoma bendrai krepšelio sumai.
+//    Naudojama tik viena, didžiausia su krepšeliu susieta nuolaida ('cartDiscounts').
 //    */
-//    $result = [
-//        'ipsNew' => [],
-//        'ipsOld' => [],
-//        'ipsRemaining' => [],
-//    ];
-//
-//    return $result;
+//    $sum = 0;
+//    foreach (getShoppingCart()['products'] as $value){
+//        $midSum = 0;
+//        if (is_array($value)){
+//            if (array_key_exists('price', $value) && array_key_exists('quantity', $value)){
+//                $midSum += $value['price'] * $value['quantity'];
+//            }
+//            if (array_key_exists('discount', $value)){
+//                $midSum -= $midSum / 100 * $value['discount'];
+//            }
+//        }
+//        $sum += $midSum;
+//    }
+//    $finalDisc = getShoppingCart()['cartDiscounts'];
+//    rsort($finalDisc);
+//    $sum -= $sum / 100 * $finalDisc[0];
+//    return round($sum, 2);
 //}
 //
+//echo exercise3();
+
+function exercise4(array $newIpList): array
+{
+    $existingIpList = [
+        '1.17.2.1',
+        '15.1.2.1',
+        '1.9.2.1',
+        '1.1.98.1',
+        '1.1.2.12',
+        '1.11.2.1',
+        '122.1.2.1',
+        '1.31.2.1',
+        '33.12.2.1',
+    ];
+
+    /*
+    Sukategorizuokite ip adresų sąrašą.
+    ipsNew - ip iš $newIpList, kurių nėra $existingIpList
+    ipsOld - ip iš $existingIpList, kurių nėra $newIpList
+    ipsRemaining - ip, kurie egzistuoja abiejuose sąrašuose
+    funkcija butu kviečiam taip:
+    exercise4(
+        ['15.1.2.1', '16.1.8.1', '15.1.8.1']
+    );
+    */
+    $ipsNew = [];
+    $ipsOld =[];
+    $ipsRemaining = [];
+    foreach ($newIpList as $value){
+        if (!in_array($value, $existingIpList)){
+            $ipsNew[] = $value;
+        }
+    }
+    foreach ($existingIpList as $value){
+        if (!in_array($value, $newIpList)){
+            $ipsOld[] = $value;
+        }
+    }
+    $ipsRemaining = array_intersect($existingIpList, $newIpList);
+
+    return [
+        $ipsNew,
+        $ipsOld,
+        $ipsRemaining,
+    ];
+}
+
+var_dump(exercise4(
+    ['15.1.2.1', '16.1.8.1', '15.1.8.1']
+));
+
 //function exercise5(): string
 //{
 //    $words = [
