@@ -92,57 +92,57 @@ function getShoppingCart(): array
 //}
 //
 //echo exercise3();
-
-function exercise4(array $newIpList): array
-{
-    $existingIpList = [
-        '1.17.2.1',
-        '15.1.2.1',
-        '1.9.2.1',
-        '1.1.98.1',
-        '1.1.2.12',
-        '1.11.2.1',
-        '122.1.2.1',
-        '1.31.2.1',
-        '33.12.2.1',
-    ];
-
-    /*
-    Sukategorizuokite ip adresų sąrašą.
-    ipsNew - ip iš $newIpList, kurių nėra $existingIpList
-    ipsOld - ip iš $existingIpList, kurių nėra $newIpList
-    ipsRemaining - ip, kurie egzistuoja abiejuose sąrašuose
-    funkcija butu kviečiam taip:
-    exercise4(
-        ['15.1.2.1', '16.1.8.1', '15.1.8.1']
-    );
-    */
-    $ipsNew = [];
-    $ipsOld =[];
-    $ipsRemaining = [];
-    foreach ($newIpList as $value){
-        if (!in_array($value, $existingIpList)){
-            $ipsNew[] = $value;
-        }
-    }
-    foreach ($existingIpList as $value){
-        if (!in_array($value, $newIpList)){
-            $ipsOld[] = $value;
-        }
-    }
-    $ipsRemaining = array_intersect($existingIpList, $newIpList);
-
-    return [
-        $ipsNew,
-        $ipsOld,
-        $ipsRemaining,
-    ];
-}
-
-var_dump(exercise4(
-    ['15.1.2.1', '16.1.8.1', '15.1.8.1']
-));
-
+//
+//function exercise4(array $newIpList): array
+//{
+//    $existingIpList = [
+//        '1.17.2.1',
+//        '15.1.2.1',
+//        '1.9.2.1',
+//        '1.1.98.1',
+//        '1.1.2.12',
+//        '1.11.2.1',
+//        '122.1.2.1',
+//        '1.31.2.1',
+//        '33.12.2.1',
+//    ];
+//
+//    /*
+//    Sukategorizuokite ip adresų sąrašą.
+//    ipsNew - ip iš $newIpList, kurių nėra $existingIpList
+//    ipsOld - ip iš $existingIpList, kurių nėra $newIpList
+//    ipsRemaining - ip, kurie egzistuoja abiejuose sąrašuose
+//    funkcija butu kviečiam taip:
+//    exercise4(
+//        ['15.1.2.1', '16.1.8.1', '15.1.8.1']
+//    );
+//    */
+//    $ipsNew = [];
+//    $ipsOld =[];
+//    $ipsRemaining = [];
+//    foreach ($newIpList as $value){
+//        if (!in_array($value, $existingIpList)){
+//            $ipsNew[] = $value;
+//        }
+//    }
+//    foreach ($existingIpList as $value){
+//        if (!in_array($value, $newIpList)){
+//            $ipsOld[] = $value;
+//        }
+//    }
+//    $ipsRemaining = array_intersect($existingIpList, $newIpList);
+//
+//    return [
+//        $ipsNew,
+//        $ipsOld,
+//        $ipsRemaining,
+//    ];
+//}
+//
+//var_dump(exercise4(
+//    ['15.1.2.1', '16.1.8.1', '15.1.8.1']
+//));
+//
 //function exercise5(): string
 //{
 //    $words = [
@@ -162,33 +162,70 @@ var_dump(exercise4(
 //    Masyvo elementų skaičius galėtų dideti, bet jis visada bus lyginis.
 //    Rezultatas turėtų būti - 'Quick fox jumps over the very lazy dog'
 //    */
-//    return '';
+//    $newArr = array_chunk($words, (count($words)/2));
+//    $output = '';
+//    foreach ($newArr as $value){
+//        for ($i = (count($value)-1); $i>=0; $i--){
+//            $output = $output . $value[$i] . " ";
+//        }
+//    }
+//    return $output;
 //}
-//
-//
+////echo exercise5();
 ///*
 //    exercise 6
 //    Parašykite savo array_map funkcijos versiją nesinaudodami pačia array_map funkcija
 //*/
+//$myArr = [1,2,3,8,];
+//$myCall = function ($a){
+//    return $a * 3;
+//};
+//
 //function array_map_custom(callable $callback, array $array): array
 //{
-//    return [];
+//    $output = [];
+//    foreach ($array as $value){
+//        $output[] = $callback($value);
+//    }
+//    return $output;
 //}
 //
+//print_r(array_map_custom($myCall, $myArr));
 ///*
 //    exercise 7
 //    Parašykite savo array_filter funkcijos versiją nesinaudodami pačia array_filter funkcija
 //*/
+//$myArr = [1,2,3,4,5,6,7,8,];
+//$myCall = function ($x){
+//    return $x % 2 === 0;
+//};
 //function array_filter_custom(array $array, ?callable $callback): array
 //{
-//    return [];
+//    $output = [];
+//    foreach ($array as $value){
+//        if ($callback($value)){
+//            $output[] = $value;
+//        }
+//    }
+//    return $output;
 //}
-//
-///*
-//    exercise 8
-//    Parašykite savo array_reduce funkcijos versiją nesinaudodami pačia array_reduce funkcija
-//*/
-//function array_reduce_custom(array $array, callable $callback, $carry)
-//{
-//    return 'array reduced to string';
-//}
+//print_r(array_filter_custom($myArr, $myCall));
+/*
+    exercise 8
+    Parašykite savo array_reduce funkcijos versiją nesinaudodami pačia array_reduce funkcija
+*/
+$myArr = [1,2,3,4,5,6,];
+$myCall = function ($x){
+    return $x * 2;
+};
+
+function array_reduce_custom(array $array, callable $callback, $carry)
+{
+    $output = $carry . " ";
+    foreach ($array as $value){
+        $output = $output . $callback($value) . " ";
+    }
+    return $output;
+}
+
+var_dump(array_reduce_custom($myArr, $myCall, 5));
