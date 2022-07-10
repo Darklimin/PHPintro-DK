@@ -36,22 +36,45 @@ $inventory = [
 function exercise1 (string $myString, array $myInventory): void
 {
     $firstEx = explode(" ", $myString);
-    echo "You bought: ";
-    for ($x=0; $x<count($firstEx); $x++){
+    $secondEx = [];
+    $buyItems = [];
+    $buyCounts = [];
+    $myX = true;
+    for ($x = 0; $x < count($firstEx); $x++) {
         $secondEx[$x] = explode(":", $firstEx[$x]);
-        if ($x<count($firstEx)-1) {
-            echo $secondEx[$x][1] . " " . $secondEx[$x][0] . ", ";
-        } else {echo $secondEx[$x][1] . " " . $secondEx[$x][0];}
+        $buyItems[] = $secondEx[$x][0];
+        $buyCounts[] = $secondEx[$x][1];
     }
-    $total = 0;
-    echo PHP_EOL . "*****" . PHP_EOL;
-    for ($y=0; $y<count($firstEx); $y++){
-        echo $secondEx[$y][0] . PHP_EOL . $myInventory[$secondEx[$y][0]]["price"] .
-            " * " . $secondEx[$y][1] . " = " . $myInventory[$secondEx[$y][0]]["price"] * $secondEx[$y][1] .
-            PHP_EOL;
-        $total += $myInventory[$secondEx[$y][0]]["price"] * $secondEx[$y][1];
+    foreach ($buyItems as $key => $value) {
+        if ($buyCounts[$key]>$myInventory[$value]['count']){
+            echo 'Error!' . PHP_EOL . 'We only have ' . $myInventory[$value]['count'] . ' ' . $value .
+            ', you asked ' . $buyCounts[$key] . ' ' . $value . PHP_EOL;
+            $myX = false;
+            break;
+        }
     }
-    echo "*****" . PHP_EOL . "Total: " . $total;
+    if ($myX === true){
+        $firstEx = explode(" ", $myString);
+        echo "You bought: ";
+        for ($x = 0; $x < count($firstEx); $x++) {
+            $secondEx[$x] = explode(":", $firstEx[$x]);
+            if ($x < count($firstEx) - 1) {
+                echo $secondEx[$x][1] . " " . $secondEx[$x][0] . ", ";
+            } else {
+                echo $secondEx[$x][1] . " " . $secondEx[$x][0];
+            }
+        }
+        $total = 0;
+        echo PHP_EOL . "*****" . PHP_EOL;
+        for ($y = 0; $y < count($firstEx); $y++) {
+            echo $secondEx[$y][0] . PHP_EOL . $myInventory[$secondEx[$y][0]]["price"] .
+                " * " . $secondEx[$y][1] . " = " . $myInventory[$secondEx[$y][0]]["price"] * $secondEx[$y][1] .
+                PHP_EOL;
+            $total += $myInventory[$secondEx[$y][0]]["price"] * $secondEx[$y][1];
+        }
+        echo "*****" . PHP_EOL . "Total: " . $total;
+    }
+
 }
 
 exercise1($argv[1], $inventory);
