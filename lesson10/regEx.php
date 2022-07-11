@@ -89,6 +89,7 @@ function exercise3(): array
     Event date (YYYY-MM-DD): 2022-06-15
     Event 'birthday' is 97 days away
 */
+//file_put_contents('./days_until_calculator.php', FILE_APPEND);
 
 function exercise5(): void
 {
@@ -128,16 +129,22 @@ function exercise5(): void
             'weight' => 1450
         ],
     ];
+    $serializedData = json_encode($vehicles, JSON_PRETTY_PRINT);
+    file_put_contents('./vehicles_database.json', $serializedData, FILE_APPEND);
 }
+
+//exercise5();
 
 function exercise6(): array
 {
     /*
     Perskaitykite failo vehicles_database.json turinį, paverskite jį į masyvą ir grąžinkite iš funkcijos.
     */
-
-    return [];
+    $data = file_get_contents('./vehicles_database.json');
+    return json_decode($data, true);
 }
+
+//print_r(exercise6());
 
 function exercise7(): array
 {
@@ -155,6 +162,12 @@ function exercise7(): array
     - į masyvą pridėkite naują elementą ($newVehicle)
     - vėl išsaugokite visą masyvą faile vehicles_database.json
     */
-
-    return [];
+    $data = file_get_contents('./vehicles_database.json');
+    $vehicles = json_decode($data, true);
+    $vehicles[] = $newVehicle;
+    $serializedData = json_encode($vehicles, JSON_PRETTY_PRINT);
+    file_put_contents('./vehicles_database.json', $serializedData);
+    return $vehicles;
 }
+
+print_r(exercise7());
