@@ -40,6 +40,7 @@ function exercise1 (string $myString, array $myInventory): void
     $buyItems = [];
     $buyCounts = [];
     $myX = true;
+    $needErr = true;
     for ($x = 0; $x < count($firstEx); $x++) {
         $secondEx[$x] = explode(":", $firstEx[$x]);
         $buyItems[] = $secondEx[$x][0];
@@ -47,14 +48,16 @@ function exercise1 (string $myString, array $myInventory): void
     }
     foreach ($buyItems as $key => $value) {
         if ($buyCounts[$key]>$myInventory[$value]['count']){
-            echo 'Error!' . PHP_EOL . 'We only have ' . $myInventory[$value]['count'] . ' ' . $value .
+            if ($needErr === true){
+                echo 'Error!' . PHP_EOL;
+                $needErr = false;
+            }
+            echo 'We only have ' . $myInventory[$value]['count'] . ' ' . $value .
             ', you asked ' . $buyCounts[$key] . ' ' . $value . PHP_EOL;
             $myX = false;
-            break;
         }
     }
     if ($myX === true){
-        $firstEx = explode(" ", $myString);
         echo "You bought: ";
         for ($x = 0; $x < count($firstEx); $x++) {
             $secondEx[$x] = explode(":", $firstEx[$x]);
@@ -74,7 +77,6 @@ function exercise1 (string $myString, array $myInventory): void
         }
         echo "*****" . PHP_EOL . "Total: " . $total;
     }
-
 }
 
 exercise1($argv[1], $inventory);
