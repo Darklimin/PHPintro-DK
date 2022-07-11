@@ -33,5 +33,15 @@
         "type": "plane",
         "name": "Airbus A320",
         "weight": 39500
+    },
+    {
+        "type": "",
+        "name": "",
+        "weight": ""
+    },
+    {
+        "type": "big",
+        "name": "KAMAZ",
+        "weight": 9999000
     }
 ]
