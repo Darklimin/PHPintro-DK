@@ -15,72 +15,60 @@ CRUD - Create, Read, Update, Delete
 
 ######################################################################################
 */
-function addVehicle (): void{
+function myCrud (string $myString): void{
     $data = file_get_contents('./vehicles_database.json');
     $vehicles = json_decode($data, true);
-    echo 'Add new vehicle' . PHP_EOL;
-    $type = readline('Vehicle type: ');
-    $name = readline('Vehicle name: ');
-    $weight = readline('Vehicle weight: ');
-    $rWeight = intval($weight);
-    if (strlen($name)>0 && strlen($name) && $rWeight>0 ) {
-        $vehicles[] = ["type" => $type,
-            "name" => $name,
-            "weight" => $rWeight];
-        $serializedData = json_encode($vehicles, JSON_PRETTY_PRINT);
-        file_put_contents('./vehicles_database.json', $serializedData);
-        echo 'Vehicle saved!';
-    } else {
-        echo 'You entered invalid parameters. Try one more time.';
+    if ($myString === 'add') {
+        echo 'Add new vehicle' . PHP_EOL;
+        $type = readline('Vehicle type: ');
+        $name = readline('Vehicle name: ');
+        $weight = readline('Vehicle weight: ');
+        $rWeight = intval($weight);
+        if (strlen($name) > 0 && strlen($name) && $rWeight > 0) {
+            $vehicles[] = ["type" => $type,
+                "name" => $name,
+                "weight" => $rWeight];
+            $serializedData = json_encode($vehicles, JSON_PRETTY_PRINT);
+            file_put_contents('./vehicles_database.json', $serializedData);
+            echo 'Vehicle saved!';
+        } else {
+            echo 'You entered invalid parameters. Try one more time.';
+        }
+    } elseif ($myString === 'list'){
+        echo 'Vehicle list:' . PHP_EOL;
+        foreach ($vehicles as $key => $value){
+            echo '--------' . PHP_EOL;
+            echo 'id: ' . $key . PHP_EOL;
+            echo 'type: ' . $value['type'] . PHP_EOL;
+        echo 'name: ' . $value['name'] . PHP_EOL;
+        echo 'weight: ' . $value['weight'] . PHP_EOL;
+    }
+    } elseif ($myString === 'show_one'){
+        echo 'Please enter ID of the vehicle from 0 to ' . (count($vehicles) - 1) . PHP_EOL;
+        $userID = readline();
+        if ($userID>=0 && $userID<count($vehicles)){
+            echo "Vehicle ID no " . $userID . " is:" . PHP_EOL;
+            print_r($vehicles[$userID]);
+        } else {
+            echo "ID no " . $userID . " doesn't exists in vehicles DB";
+        }
+    } elseif ($myString === 'delete_one'){
+        echo 'Please enter ID of the to delete from 0 to ' . (count($vehicles) - 1) . PHP_EOL;
+        $userID = readline();
+        if (array_key_exists($userID, $vehicles)){
+            unset($vehicles[$userID]);
+            $serializedData = json_encode($vehicles, JSON_PRETTY_PRINT);
+            file_put_contents('./vehicles_database.json', $serializedData);
+            echo "Vehicle " . $userID . " deleted" . PHP_EOL;
+        } else {
+            echo "Vehicle " . $userID . " does not exist!";
+        }
     }
 }
 
-//addVehicle();
+myCrud($argv[1]);
 
-function printAll (){
-    $data = file_get_contents('./vehicles_database.json');
-    $vehicles = json_decode($data, true);
-    echo 'DB vehicles names:' . PHP_EOL;
-    foreach ($vehicles as $value){
-        echo $value['name'] . PHP_EOL;
-    }
-}
-
-//printAll();
-
-function printOne (): void
-{
-    $data = file_get_contents('./vehicles_database.json');
-    $vehicles = json_decode($data, true);
-    echo 'Enter vehicle ID from 0 to ' . (count($vehicles) - 1) . PHP_EOL;
-    $userID = readline();
-    if ($userID>=0 && $userID<count($vehicles)){
-        echo "Vehicle ID no " . $userID . " is:" . PHP_EOL;
-        print_r($vehicles[$userID]);
-    } else {
-        echo "ID no " . $userID . " doesn't exists in vehicles DB";
-    }
-}
-
-//printOne();
-
-function deleteOne (): void
-{
-    $data = file_get_contents('./vehicles_database.json');
-    $vehicles = json_decode($data, true);
-    echo 'Enter vehicle ID from 0 to ' . (count($vehicles) - 1) . ' you want to delete'. PHP_EOL;
-    $userID = readline();
-    if ($userID>=0 && $userID<count($vehicles)){
-        unset($vehicles[$userID]);
-        $serializedData = json_encode($vehicles, JSON_PRETTY_PRINT);
-        file_put_contents('./vehicles_database.json', $serializedData);
-        echo "Vehicle ID no " . $userID . " is deleted from vehicle DB" . PHP_EOL;
-    } else {
-        echo "ID no " . $userID . " doesn't exists in vehicles DB";
-    }
-}
-
-//deleteOne();
+//kviesti php -f advEx.php delete_one add list show_one
 
 /*
 1.1 Sukurkite priemonės pridėjimo funkcionalumą.
