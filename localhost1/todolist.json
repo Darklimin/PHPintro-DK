@@ -1,32 +1,20 @@
-{
-    "1": {
-        "todo": "Padaryti",
-        "createdAt": "2022-07-13 19:07",
+[
+    {
+        "todo": "Patikrinti visk\u0105",
+        "createdAt": "2022-07-13 20:04",
         "dueDate": "2002-10-10",
         "dueTime": "14:00"
     },
-    "2": {
-        "todo": "Padaryti",
-        "createdAt": "2022-07-13 19:07",
+    {
+        "todo": "Supushinti \u012f GIT\u0105",
+        "createdAt": "2022-07-13 20:04",
         "dueDate": "2002-10-10",
-        "dueTime": "14:00"
+        "dueTime": "15:00"
     },
-    "3": {
-        "todo": "Padaryti",
-        "createdAt": "2022-07-13 19:07",
+    {
+        "todo": "Pasid\u017eiaugti",
+        "createdAt": "2022-07-13 20:05",
         "dueDate": "2002-10-10",
-        "dueTime": "14:00"
-    },
-    "4": {
-        "todo": "Padaryti",
-        "createdAt": "2022-07-13 19:07",
-        "dueDate": "2002-10-10",
-        "dueTime": "14:00"
-    },
-    "5": {
-        "todo": "Padaryti",
-        "createdAt": "2022-07-13 19:07",
-        "dueDate": "2002-10-10",
-        "dueTime": "14:00"
+        "dueTime": "16:00"
     }
-}
+]
