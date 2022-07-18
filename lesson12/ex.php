@@ -88,4 +88,25 @@ function vadidateIP (string $myString): void
         }
 }
 
-vadidateIP('255.255.255.250');
+//vadidateIP('255.255.255.250');
+
+function vadidateIP2 (string $myString): void
+{
+    $myArray = explode('.', $myString);
+    $isValid = true;
+    foreach ($myArray as $value) {
+        if ($value < 256 && $value >= 0){
+            continue;
+        } else {
+            $isValid = false;
+            break;
+        }
+    }
+    if ($isValid) {
+        echo $myString . ' is valid IPv4';
+    } else {
+        echo 'IPv4 is invalid';
+    }
+}
+
+vadidateIP2('255.255.255.255');
