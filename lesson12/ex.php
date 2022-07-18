@@ -51,11 +51,26 @@ function valMobNumOne ($myString): void {
     }
 }
 
-valMobNumOne('00370-600 45678');
+//valMobNumOne('00370-600 45678');
 
 //4. Parašykite funkciją, kuri užmaskuotų dalį vartotojo duomenų. Pavardės ir gimimo metų simboliai
 //turėtų būti pakeisti i simbolius 'X'.
 //"John Smith, 1979 05 15" --> "John XXXXX, XXXX 05 15"
+
+function maskData($myString): void{
+    $myArray = explode(' ', $myString);
+    $nameMask = '';
+    for ($x=1; $x<strlen($myArray[1]); $x++){
+        $nameMask = $nameMask . 'X';
+    }
+    $myArray[1] = $nameMask . ',';
+    $myArray[2] = 'XXXX';
+    $output = implode(' ', $myArray);
+    echo $output;
+}
+
+maskData('John Smith, 1979 05 15');
+
 //5. Parašykite funkciją, kuri pravaliduotų IPv4 adresą. IPv4 adresas yra sudarytas iš 4 skaičių, kurių kiekvienas gali
 //būti nuo 0 iki 255. Skaičiai atskirti taškais.
 //Pvz.:
