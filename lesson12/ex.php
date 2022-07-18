@@ -69,7 +69,7 @@ function maskData($myString): void{
     echo $output;
 }
 
-maskData('John Smith, 1979 05 15');
+//maskData('John Smith, 1979 05 15');
 
 //5. Parašykite funkciją, kuri pravaliduotų IPv4 adresą. IPv4 adresas yra sudarytas iš 4 skaičių, kurių kiekvienas gali
 //būti nuo 0 iki 255. Skaičiai atskirti taškais.
@@ -77,3 +77,15 @@ maskData('John Smith, 1979 05 15');
 //255.255.255.255
 //1.1.0.1
 //*/
+
+function vadidateIP (string $myString): void
+    {
+        $isValid = filter_var($myString, FILTER_VALIDATE_IP);
+        if ($isValid){
+            echo $isValid . ' is valid IPv4';
+        } else {
+            echo 'IPv4 is invalid';
+        }
+}
+
+vadidateIP('255.255.255.250');
