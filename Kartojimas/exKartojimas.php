@@ -87,35 +87,64 @@ function exercise4(array $myArr): void {
     print_r($output);
 }
 
-exercise4(['hello', 'you']);
+//exercise4(['hello', 'you']);
 //
 //Sis array bus naudojamas 5 ir 6 uzduociai :
 //
-//[
-//    'products' => [
-//        'Comfy chair' => 'no data',
-//        'Yellow lamp' => [
-//            'price' => 15.3,
-//            'quantity' => 2,
-//        ],
-//        'Didzioji sofa' => [
-//            'pavadinimas' => 'Didzioji sofa',
-//            'kaina' => 'trylika eurų'
-//        ],
-//        'Softest rug' => [
-//            'price' => 27.3,
-//            'quantity' => 3,
-//            'discount' => 13,
-//        ],
-//        'Blue shelf' => [],
-//    ],
-//    'cartDiscounts' => [5, 16, 15],
-//];
-//
+$givenArr=[
+    'products' => [
+        'Comfy chair' => 'no data',
+        'Yellow lamp' => [
+            'price' => 15.3,
+            'quantity' => 2,
+        ],
+        'Didzioji sofa' => [
+            'pavadinimas' => 'Didzioji sofa',
+            'kaina' => 'trylika eurų'
+        ],
+        'Softest rug' => [
+            'price' => 27.3,
+            'quantity' => 3,
+            'discount' => 13,
+        ],
+        'Blue shelf' => [],
+    ],
+    'cartDiscounts' => [5, 16, 15],
+];
+
 //
 //5. Atspausdinkite statistika - pavadinima, kokia kaina ir koks likutis.
 //Pvz:. Pavadinimas - Sofa, Kaina - 15.6, Likutis - 2
 //
+function exercise5(array $myArr): void {
+    foreach ($myArr['products'] as $key => $value) {
+        echo 'Pavadinimas - ' . $key;
+        if (is_array($value) && sizeof($value) !== 0) {
+                if (array_key_exists('price', $value)){
+                    echo ', Kaina - ' . $value['price'];
+                    if (array_key_exists('quantity', $value)){
+                        echo ', Likutis - ' . $value['quantity'] . PHP_EOL;
+                    } else {
+                        echo ', Likutis - nėra duomenų' . PHP_EOL;
+                    }
+                } elseif (array_key_exists('kaina', $value)) {
+                    echo ', Kaina - ' . $value['kaina'];
+                    if (array_key_exists('quantity', $value)){
+                        echo ', Likutis - ' . $value['quantity'] . PHP_EOL;
+                    } else {
+                        echo ', Likutis - nėra duomenų' . PHP_EOL;
+                    }
+                } else {
+                    echo ', Kaina - nėra duomenų' . PHP_EOL;
+                }
+        } else {
+            echo ', Kaina - nėra duomenų, Likutis - nėra duomenų' . PHP_EOL;
+        }
+    }
+}
+
+exercise5($givenArr);
+
 //6. Parašykite funkciją kuri priimti prekės pavadinimą ir kokį kiekį norima nusipirkti, jeigu kiekio užtenka mūsų sandelyje (masyve)
 //    tuomet atspausdinama - Jums parduota tokio pavadinimo - PREKES_PAVADINIMAS, prekė, kuri kainuoja - 55.55
 //    Kitu atveju turi buti spausdinama - atsiprasau, bet tokio likucio sandelyje nebeturime.
