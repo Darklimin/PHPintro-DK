@@ -40,14 +40,14 @@ function exercise3(int $number): void {
     if ($number<0){
         $number=abs($number);
     }
-    for ($i=$number-1; $i>54; $i--){
+    for ($i=$number-1; $i>=0; $i--){
         if ($i%55===0){
             echo $i . PHP_EOL;
         }
     }
 }
 
-exercise3(60);
+//exercise3(60);
 
 //
 //4.   Išveskite žodžių statistiką.
@@ -71,6 +71,23 @@ exercise3(60);
 //             ]
 //         ]
 //
+function exercise4(array $myArr): void {
+    $output=[];
+    foreach ($myArr as $key => $value){
+        $output[$value]=[
+            'vowels' => $vowels = substr_count($value, 'a')+substr_count($value, 'e')+
+                substr_count($value, 'i')+substr_count($value, 'o')+
+                substr_count($value, 'u'),
+            'consonants' => strlen($value) - $vowels,
+            'length' => strlen($value),
+            'starts_with' => substr($value, 0, 1),
+            'ends_with' => substr($value, -1),
+        ];
+    }
+    print_r($output);
+}
+
+exercise4(['hello', 'you']);
 //
 //Sis array bus naudojamas 5 ir 6 uzduociai :
 //
