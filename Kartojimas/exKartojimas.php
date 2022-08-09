@@ -29,13 +29,26 @@ $numbers = [
     ],
 ];
 
-echo $numbers[2][1][3][2];
+//echo $numbers[2][1][3][2];
 
 //
 //3.     Išspausdinkite skaičius, kurie yra mažesni nei $number ir dalijasi iš 55. Jeigu paduotas skaičius mažesnis nei 0,
-//       funkcija paverčia šį skaičių minusiniu.
+//       funkcija paverčia šį skaičių pliusiniu.
 //Funkcijos kvietimas: exercise10(60)
 //
+function exercise3(int $number): void {
+    if ($number<0){
+        $number=abs($number);
+    }
+    for ($i=$number-1; $i>54; $i--){
+        if ($i%55===0){
+            echo $i . PHP_EOL;
+        }
+    }
+}
+
+exercise3(60);
+
 //
 //4.   Išveskite žodžių statistiką.
 //Funkcija kviečiama:
