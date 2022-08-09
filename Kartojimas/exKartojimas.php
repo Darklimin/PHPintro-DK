@@ -13,24 +13,24 @@ function exercise1(): void {
     }
 }
 
-exercise1();
+//exercise1();
 
 
 //2. Pasinaudodami masyvo operatoriumi paimkite elementą, kurio reikšmė yra 555 ir grąžinkite tą reikšmę iš funkcijos.
 //
-//$numbers = [
-//    [0, 1],
-//    [1, 0, 2],
-//    [
-//        0,
-//        [
-//            0, 1, 99,
-//            [
-//                10, 44, 555,
-//            ],
-//        ],
-//    ],
-//];
+$numbers = [
+    [0, 1],
+    [1, 0, 2],
+    [0,
+        [0, 1, 99,
+                    [10, 44, 555,
+                    ],
+        ],
+    ],
+];
+
+echo $numbers[2][1][3][2];
+
 //
 //3.     Išspausdinkite skaičius, kurie yra mažesni nei $number ir dalijasi iš 55. Jeigu paduotas skaičius mažesnis nei 0,
 //       funkcija paverčia šį skaičių minusiniu.
